@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible " content="ie=edge">
+    <title>Neflix N Chill</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="netflixnchill.css">
+</head>
+
+<body>
+
+    <nav id="nav" class="navbar navbar-default">
+
+
+        <div class="container">
+            <div class="navbar-header">
+                <span class="side-bar" data-spy="affix" data-offset-top="100" id="myAffix" style="font-size:30px;cursor:pointer" onclick="openNav()">☰ </span>
+
+                <img style="max-width:50px; margin-top: -7px;" src="208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png">
+
+
+            </div>
+
+
+<!--<h3 class="neflix">Neflix N Chill</h3>-->
+
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="#a">Poular</a>
+                <a href="#b">Top Rated</a>
+                <a href="#c">Coming soon</a>
+
+            </div>
+
+
+
+
+        </div>
+    </nav>
+
+
+
+
+    <div id="app" class="container">
+      
+     
+     
+        
+        
+    
+        
+        
+      <div class="categorybox a page">
+            <h1 class="category">Popular</h1>
+        </div>
+        <div v-for="(movie,$key) in movies" v-if="cat.popular">
+
+
+
+            <div class="a page" >
+
+
+
+
+                <div id="each" class="col-md-3">
+
+
+                    <img class="poster" :src='"http://image.tmdb.org/t/p/original/" + movie.poster_path'>
+                    <h5 class="title">{{movie.title}}</h5>
+
+                    <!--                    <a v-on:click="showDetail"id="click" class="btn btn-primary">Detail </a>-->
+                    <!--                    <a id="click" class="btn btn-primary">Detail</a>-->
+                    <!--                    <a class="btn btn-primary" data-toggle="modal" data-target="#mymodel" id="buttontwo" data-toggle="modal">Detail </a>-->
+                    <a class="btn btn-primary" data-toggle="modal" :href='"#mymodel"+$key' id="buttontwo">Detail</a>
+
+
+
+
+
+                    <div class="buttoncontainer">
+
+                        <div class="modal" :id='"mymodel"+$key'>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <div class="mdal-header">
+                                        <h4 class="text-center text-primary"> Detail</h4>
+                                        <button type="button" class="close" data-dismiss="modal">
+                 &times;</button>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <img class="poster" :src='"http://image.tmdb.org/t/p/original/" + movie.poster_path'>
+                                        <h3>{{movie.title}}</h3>
+                                        <p>{{movie.overview}}</p>
+
+
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button class="btn btn-danger " data-dismiss="modal">Close</button>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            </div>
+
+    
+    
+        
+        <!--------------v for movie--------->
+     
+        <div class="categorybox">
+        
+         <h1 class="category b page">Top Rated</h1>
+        </div>
+               
+
+        
+        
+<div class="tops" v-for="(movietop,$key) in moviesTop" v-if="cat.topRated">
+
+
+            <div class="b page">
+
+
+
+
+                <div id="each" class="col-md-3" v-bind:class="'topRated'">
+
+
+                    <img class="poster" :src='"http://image.tmdb.org/t/p/original/" + movietop.poster_path'>
+                    <h5 class="title">{{movietop.title}}</h5>
+
+                  
+                    <a class="btn btn-primary" data-toggle="modal" :href='"#mymodel2"+$key' id="buttontwo">detail</a>
+
+
+
+
+
+                    <div class="buttoncontainer">
+
+                        <div class="modal" :id='"mymodel2"+$key'>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <div class="mdal-header">
+                                        <h4 class="text-center text-primary"> Detail</h4>
+                                        <button type="button" class="close" data-dismiss="modal">
+                 &times;</button>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <img class="poster" :src='"http://image.tmdb.org/t/p/original/" + movietop.poster_path'>
+                                        <h3>{{movietop.title}}</h3>
+                                        <p>{{movietop.overview}}</p>
+
+
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button class="btn btn-danger " data-dismiss="modal">Close</button>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </div>
+       
+          <!---Toprated end----->
+        
+                  <div class="categorybox">
+         <h1 class="category c page">UPCOMING</h1>
+        </div>
+               
+
+        <div class="ups" v-for="(movieup,$key) in moviesUp" v-if="cat.comingsoon">
+        
+
+
+
+            <div class="c page">
+
+
+
+
+                <div id="each" class="col-md-3" v-bind:class="'notTopRated'">
+
+
+                    <img class="poster" :src='"http://image.tmdb.org/t/p/original/" + movieup.poster_path'>
+                    <h5 class="title">{{movieup.title}}</h5>
+
+                  
+                    <a class="btn btn-primary" data-toggle="modal" :href='"#mymodel3"+$key' id="buttontwo">detail</a>
+
+
+
+
+
+                    <div class="buttoncontainer">
+
+                        <div class="modal" :id='"mymodel3"+$key'>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+
+                                    <div class="mdal-header">
+                                        <h4 class="text-center text-primary"> Detail</h4>
+                                        <button type="button" class="close" data-dismiss="modal">
+                 &times;</button>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <img class="poster" :src='"http://image.tmdb.org/t/p/original/" + movieup.poster_path'>
+                                        <h3>{{movieup.title}}</h3>
+                                        <p>{{movieup.overview}}</p>
+
+
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button class="btn btn-danger " data-dismiss="modal">Close</button>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+        </div>
+          
+          
+          
+
+      
+    </div>
+   
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <!--    bootstrap and jquery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--    isotope-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <!--    fancybox-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--    isotope-->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <!--    fancybox-->
+
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="netflixnchill.js"></script>
+</body>
+
+</html>
